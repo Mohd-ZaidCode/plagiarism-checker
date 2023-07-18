@@ -1,32 +1,32 @@
 import os
-from numpy import vectorize 
-from tkinter import filedialog
+import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from tkinter import filedialog
 # function to import file for comparison 
-def AddFile():
-    samples=[]
+def Addmusic():
+    samples = []
     path = filedialog.askdirectory()
-    if path:os.chdir(path)
-    sample_files=os.listdir(path)
-    
-    for files in sample_files:
-        if files.endswith(".txt"):
-            samples.insert(files)
-            return samples 
+    if path:
+        os.chdir(path)
+        sample_files = os.listdir(path)
+        for file in sample_files:
+            if file.endswith(".txt"):
+                samples.append(file)
+        return samples
     
 #calling function  and adding puting all the file to be compare in a list    
-sample_files = AddFile()
+sample_files = Addmusic()
 #reading all the files 
-sample_contents = [open(File).read() for File in sample_files]
+sample_contents = [open(file).read() for file in sample_files]
 
 #👇🏻these two line of commented code to check campare files only in the current working directory
 # sample_files = [doc for doc in os.listdir() if doc.endswith('.txt')]
 # sample_contents = [open(File).read() for File in sample_files]
- 
+
 vectorize = lambda Text: TfidfVectorizer().fit_transform(Text).toarray()
 similarity = lambda doc1, doc2: cosine_similarity([doc1, doc2])
- 
+
 vectors = vectorize(sample_contents)
 s_vectors = list(zip(sample_files, vectors))
 
@@ -47,4 +47,4 @@ def check_plagiarism():
 
 #calling function to check plagiarism
 for data in check_plagiarism():
-    print(data)    
+    print(data)
