@@ -28,3 +28,8 @@ The s_vectors variable pairs each file with its corresponding vector.
 The check_plagiarism function iterates through each file and compares it with the other files, calculating the similarity scores using cosine similarity.
 
 The results are stored in a set to avoid duplicates and printed to the console.
+
+## Screenshot
+
+![image](https://github.com/Mohd-ZaidCode/plagiarism-checker/assets/127447741/3be48fcc-24d7-42ca-a289-c1cc1d1e8d45)
+
