@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from tkinter import filedialog
 # function to import file for comparison 
-def Addmusic():
+def AddFile():
     samples = []
     path = filedialog.askdirectory()
     if path:
@@ -16,7 +16,7 @@ def Addmusic():
         return samples
     
 #calling function  and adding puting all the file to be compare in a list    
-sample_files = Addmusic()
+sample_files = AddFile()
 #reading all the files 
 sample_contents = [open(file).read() for file in sample_files]
 
